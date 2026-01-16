@@ -1,0 +1,59 @@
+.diagnosisContainer {
+  background: #ffffff;
+  border-left: 4px solid #4299e1;
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.diagnosisTitle {
+  margin: 0 0 1.2rem 0;
+  color: #1a365d;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  border-bottom: 2px solid #4299e1;
+  padding-bottom: 0.6rem;
+}
+
+.diagnosisContainer h4 {
+  margin: 0 0 0.7rem 0;
+  color: #2d3748;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.diagnosisContainer p {
+  margin: 0 0 1.1rem 0;
+  color: #718096;
+  font-size: 0.95rem;
+}
+
+.diagnosisContainer .buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.diagnosisContainer button {
+  padding: 0.55rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  transition: 0.18s ease;
+}
+
+.diagnosisContainer button:first-child {
+  background: #ebf8ff;
+  color: #2b6cb0;
+}
+
+.diagnosisContainer button:last-child {
+  background: #fff5f5;
+  color: #c53030;
+}
+
+.diagnosisContainer button:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
