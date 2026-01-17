@@ -34,48 +34,75 @@ export const DiagnosisPage = () => {
   };
 
   return (
-    <>
-      <div>
-        <h2>Medical Diagnosis Tool</h2>
-      </div>
-      <div className="diagnosisPageContainer">
+    <div className="diagnosis-page">
+      <header className="page-header">
+        <div className="header-content">
+          <h1>Clinical Decision Support</h1>
+          <p className="subtitle">Symptom-based diagnosis assistant</p>
+        </div>
+      </header>
+
+      <main className="diagnosis-page-container">
         {!selectedPatient ? (
-          <PatientSearch onSelectPatient={setSelectedPatient} />
-        ) : (
-          <div className="patientInfo">
-            <h3>Selected patient: {selectedPatient.firstName} {selectedPatient.lastName} </h3>
-            <p>DOB: {selectedPatient.dateOfBirth}</p>
-            <p>Gender: {selectedPatient.gender}</p>
-            <button className="change-btn" onClick={handleChangePatient}>
-              Change Patient
-            </button>
+          <div className="patient-selection-section">
+            <h2>Select Patient</h2>
+            <PatientSearch onSelectPatient={setSelectedPatient} />
           </div>
-        )}
+        ) : (
+          <>
+            <div className="patient-header-card">
+              <div className="patient-info">
+                <h3>
+                  {selectedPatient.firstName} {selectedPatient.lastName}
+                </h3>
+                <div className="patient-meta">
+                  <span>DOB: {selectedPatient.dateOfBirth}</span>
+                  <span>•</span>
+                  <span>Gender: {selectedPatient.gender}</span>
+                </div>
+              </div>
+              <button className="btn change-btn" onClick={handleChangePatient}>
+                Change Patient
+              </button>
+            </div>
 
-        {selectedPatient && (
-          <SymptomForm
-            onSubmit={(data: any) =>
-              diagnoseMutation.mutate({
-                dateOfBirth: selectedPatient.dateOfBirth,
-                gender: selectedPatient.gender,
-                symptoms: data.symptoms.split(","),
-              })
-            }
-          />
-        )}
+            <div className="diagnosis-workflow-grid">
+              <div className="symptoms-panel">
+                <SymptomForm
+                  onSubmit={(data: any) =>
+                    diagnoseMutation.mutate({
+                      dateOfBirth: selectedPatient.dateOfBirth,
+                      gender: selectedPatient.gender,
+                      symptoms: data.symptoms
+                        .split(",")
+                        .map((s: string) => s.trim()),
+                    })
+                  }
+                />
+              </div>
 
-        {diagnoseMutation.data
-          ?.filter((diagnosis) => !dismissedDiagnosisIds.has(diagnosis.id))
-          .map((diagnosis) => (
-            <DiagnosisCard
-              key={diagnosis.id}
-              diagnosis={diagnosis}
-              onValidate={(id: number, valid: boolean) =>
-                handleValidate(id, valid)
-              }
-            />
-          ))}
-      </div>
-    </>
+              <div className="results-panel">
+                {diagnoseMutation.data &&
+                  diagnoseMutation.data
+                    .filter((d) => !dismissedDiagnosisIds.has(d.id))
+                    .map((diagnosis) => (
+                      <DiagnosisCard
+                        key={diagnosis.id}
+                        diagnosis={diagnosis}
+                        onValidate={handleValidate}
+                      />
+                    ))}
+
+                {diagnoseMutation.data?.length === 0 && (
+                  <div className="empty-state">
+                    <p>No diagnoses found for current symptoms</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </>
+        )}
+      </main>
+    </div>
   );
 };

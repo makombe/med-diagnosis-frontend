@@ -1,29 +1,115 @@
-.diagnosisPageContainer {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.diagnosis-page {
+  min-height: 100vh;
+  background: var(--gray-50);
+  padding-bottom: 4rem;
+}
 
-  h2 {
-    margin-bottom: 1.5rem;
-    text-align: center;
-    font-size: 1.4rem;
-    color: #2c3e50;
+.page-header {
+  background: white;
+  border-bottom: 1px solid var(--gray-200);
+  padding: 2rem 2rem 1.6rem;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--gray-900);
+  }
+
+  .subtitle {
+    margin: 0.5rem 0 0;
+    color: var(--gray-600);
+    font-size: 1.05rem;
   }
 }
-.change-btn {
-  background: #ef4444;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background 0.2s;
 
-  &:hover {
-    background: #dc2626;
+.diagnosis-page-container {
+  max-width: 1200px;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem;
+}
+
+.patient-header-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.patient-meta {
+  margin-top: 0.5rem;
+  color: var(--gray-600);
+  font-size: 0.95rem;
+
+  span + span {
+    margin: 0 0.75rem;
+    color: var(--gray-300);
   }
+}
+
+.diagnosis-workflow-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 2.5rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.btn {
+  font-weight: 500;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+
+    &:hover { background: var(--primary-dark); }
+  }
+
+  &-outline {
+    background: transparent;
+    border: 1px solid var(--gray-300);
+    color: var(--gray-700);
+
+    &:hover {
+      background: var(--gray-100);
+      border-color: var(--gray-400);
+    }
+  }
+
+  &-sm {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.change-btn {
+  background: #e0f2fe;           
+  color: #1e40af;                
+  border: 1px solid #60a5fa;     
+  padding: 0.7rem 1.3rem;
+  border-radius: 6px;
+  font-weight: 500;
 }
