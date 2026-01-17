@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./patient-search.scss";
-import { usePatient } from "../../hooks/usePateint";
+import { usePatient } from "../../hooks/usePatient";
 
 export interface Patient {
   id: number;
