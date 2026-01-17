@@ -29,3 +29,5 @@ export const saveDiagnosisValidation = async (
 ) => {
   await apiClient.post("/diagnosis/validate", { diagnosisId, isValid });
 }
+
+

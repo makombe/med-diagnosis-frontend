@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
-import { fetchDiagnosis, validateDiagnosis } from '../api/diagnosisApi'
+import { fetchDiagnosis, saveDiagnosisValidation, validateDiagnosis } from '../api/diagnosisApi'
 
 export const useDiagnosis = () => {
   const diagnoseMutation = useMutation({ mutationFn: fetchDiagnosis })

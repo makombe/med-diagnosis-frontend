@@ -7,19 +7,19 @@ export const SymptomForm = ({ onSubmit }: any) => {
     <form className="symptom-form" onSubmit={handleSubmit(onSubmit)}>
       <h2>Patient Symptoms</h2>
 
-      <div className="form-group">
+      {/* <div className="form-group">
         <label>Age</label>
         <input type="number" {...register("age", { required: true })} />
-      </div>
+      </div> */}
 
-      <div className="form-group">
+      {/* <div className="form-group">
         <label>Gender</label>
         <select {...register("gender")}>
           <option value="">Select gender</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
-      </div>
+      </div> */}
 
       <div className="form-group">
         <label>Symptoms (comma-separated)</label>
