@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"           
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development   
+    volumes:
+      - .:/app                 
+      - /app/node_modules      
+    command: npm run dev      
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
