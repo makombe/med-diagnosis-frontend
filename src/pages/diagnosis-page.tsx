@@ -148,7 +148,6 @@ export const DiagnosisPage = () => {
       >
         <AddPatientForm
           onSubmit={async (formData: any) => {
-            console.log("Add Patient Form Data:", formData);
             try {
               // Here we are calling our api to create patient
               const newPatient: Patient = {
