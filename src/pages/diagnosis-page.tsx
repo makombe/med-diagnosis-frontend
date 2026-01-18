@@ -2,13 +2,12 @@ import { useState } from "react";
 import { SymptomForm } from "../components/symptom/symptom-form.component";
 import { DiagnosisCard } from "../components/diagnosis/diagnosis-card.component";
 import { useDiagnosis } from "../hooks/useDiagnosis";
-import "./diagnosis-page.scss";
-import {
-  Patient,
-  PatientSearch,
-} from "../components/patient/patient-search/patient-search.component";
+import { PatientSearch } from "../components/patient/patient-search/patient-search.component";
 import AddPatientForm from "../components/patient/patient-registration/add-patient.component";
 import { createPatient } from "../api/apiPatient";
+import { Patient } from "../types/patient";
+import "./diagnosis-page.scss";
+
 
 const Modal = ({
   isOpen,

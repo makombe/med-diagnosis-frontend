@@ -1,7 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import "./add-patient.scss";
 
-// Define the form data type (matches your PatientDto)
 interface PatientFormData {
   firstName: string;
   lastName: string;
@@ -11,8 +10,8 @@ interface PatientFormData {
 
 interface AddPatientFormProps {
   onSubmit: SubmitHandler<PatientFormData>;
-  isLoading?: boolean; // optional: show loading state
-  onClose?: () => void; // optional: close modal button
+  isLoading?: boolean; 
+  onClose?: () => void;
 }
 
 const AddPatientForm = ({
@@ -96,9 +95,8 @@ const AddPatientForm = ({
             className={errors.gender ? "input-error" : ""}
           >
             <option value="">Select gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            {/* You can add "other" if needed */}
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
           </select>
           {errors.gender && (
             <span className="error-message">{errors.gender.message}</span>

@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import "./symptom.scss";
+
 export const SymptomForm = ({ onSubmit }: any) => {
   const { register, handleSubmit } = useForm();
 

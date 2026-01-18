@@ -1,14 +1,7 @@
 import { useState } from "react";
-import "./patient-search.scss";
 import { usePatient } from "../../../hooks/usePatient";
-
-export interface Patient {
-  id?: number;
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
-  gender: "Male" | "Female" | "Other";
-}
+import { Patient } from "../../../types/patient";
+import "./patient-search.scss";
 
 interface PatientSearchProps {
   onSelectPatient: (patient: Patient) => void;

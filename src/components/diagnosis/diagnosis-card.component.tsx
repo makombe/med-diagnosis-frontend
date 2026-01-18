@@ -1,4 +1,5 @@
 import "./diagnosis.scss";
+
 export const DiagnosisCard = ({ diagnosis, onValidate }: any) => {
   return (
     <div className="diagnosisContainer">

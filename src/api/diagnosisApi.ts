@@ -15,7 +15,7 @@ export const validateDiagnosis = async (
   diagnosisId: number,
   isValid: boolean
 ) => {
-  console.log('Saved validation=======', diagnosisId, isValid)
+  console.log('Saved validation', diagnosisId, isValid)
 }
 
 export const fetchDiagnosisHistory = async (payload: DiagnosisRequest): Promise<DiagnosisResult[]> => {
