@@ -1,7 +1,7 @@
 import { DiagnosisRequest, DiagnosisResult } from '../types/diagnosis'
 import { apiClient } from './apiClient'
 
-// Mock implementations for testing purposes
+// Mock implementations for testing purposes. This will be replaced with real API calls later.
 export const fetchDiagnosis = async (
   payload: DiagnosisRequest
 ): Promise<DiagnosisResult[]> => {

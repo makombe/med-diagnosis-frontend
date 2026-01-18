@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./patient-search.scss";
-import { usePatient } from "../../hooks/usePatient";
+import { usePatient } from "../../../hooks/usePatient";
 
 export interface Patient {
-  id: number;
+  id?: number;
   firstName: string;
   lastName: string;
   dateOfBirth: string;
-  gender: "male" | "female" | "other";
+  gender: "Male" | "Female" | "Other";
 }
 
 interface PatientSearchProps {

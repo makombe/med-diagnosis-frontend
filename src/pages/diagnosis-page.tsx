@@ -6,12 +6,37 @@ import "./diagnosis-page.scss";
 import {
   Patient,
   PatientSearch,
-} from "../components/patient/patient-search.component";
+} from "../components/patient/patient-search/patient-search.component";
+import AddPatientForm from "../components/patient/patient-registration/add-patient.component";
+import { createPatient } from "../api/apiPatient";
+
+const Modal = ({
+  isOpen,
+  onClose,
+  children,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close-btn" onClick={onClose}>
+          ×
+        </button>
+        {children}
+      </div>
+    </div>
+  );
+};
 
 export const DiagnosisPage = () => {
   const { diagnoseMutation, validateMutation } = useDiagnosis();
   const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
-
+  const [isAddPatientModalOpen, setIsAddPatientModalOpen] = useState(false);
   const [dismissedDiagnosisIds, setDismissedDiagnosisIds] = useState<
     Set<number>
   >(new Set());
@@ -33,11 +58,16 @@ export const DiagnosisPage = () => {
     diagnoseMutation.reset();
   };
 
+  const handlePatientCreated = (newPatient: Patient) => {
+    setSelectedPatient(newPatient); // Auto-select the new patient
+    setIsAddPatientModalOpen(false); // Close modal
+  };
+
   return (
     <div className="diagnosis-page">
       <header className="page-header">
-        <div className="header-content">
-          <h1>Clinical Decision Support</h1>
+        <div className="headertr-content">
+          <h1>SymptomScan</h1>
           <p className="subtitle">Symptom-based diagnosis assistant</p>
         </div>
       </header>
@@ -45,7 +75,15 @@ export const DiagnosisPage = () => {
       <main className="diagnosis-page-container">
         {!selectedPatient ? (
           <div className="patient-selection-section">
-            <h2>Select Patient</h2>
+            <div className="section-header">
+              <h2></h2>
+              <button
+                className="btn primary-btn"
+                onClick={() => setIsAddPatientModalOpen(true)}
+              >
+                + Create New Patient
+              </button>
+            </div>
             <PatientSearch onSelectPatient={setSelectedPatient} />
           </div>
         ) : (
@@ -103,6 +141,34 @@ export const DiagnosisPage = () => {
           </>
         )}
       </main>
+
+      {/* Add Patient Modal */}
+      <Modal
+        isOpen={isAddPatientModalOpen}
+        onClose={() => setIsAddPatientModalOpen(false)}
+      >
+        <AddPatientForm
+          onSubmit={async (formData: any) => {
+            console.log("Add Patient Form Data:", formData);
+            try {
+              // Here we are calling our api to create patient
+              const newPatient: Patient = {
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                gender: formData.gender || "Other",
+                dateOfBirth: formData.dateOfBirth,
+              };
+              createPatient(newPatient).then((createdPatient) => {
+                handlePatientCreated(createdPatient);
+              });
+            } catch (error) {
+              console.error("Failed to create patient:", error);
+              // TODO: show error toast/notification
+            }
+          }}
+          onClose={() => setIsAddPatientModalOpen(false)}
+        />
+      </Modal>
     </div>
   );
 };

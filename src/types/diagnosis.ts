@@ -1,6 +1,6 @@
 export interface DiagnosisRequest {
   age?: number
-  gender: 'male' | 'female'| 'other'
+  gender: 'Male' | 'Female'| 'Other'
   symptoms: string[]
   dateOfBirth: string;
 }

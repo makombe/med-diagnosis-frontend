@@ -1,6 +1,10 @@
 # Vite + React Project with Docker
 
-Modern frontend development setup with hot module replacement (HMR) working inside Docker.
+**Important Disclaimer**  
+This application is for **Prototyping purposes only**.  
+
+**For this prototype/demo, the diagnosis endpoint currently returns mocked / static sample data to ensure reliable local testing and presentation without external dependencies.The system is fully architected to integrate with the real ApiMedic Symptom Checker API (via configurable credentials), and switching to live data requires only providing valid APP_ID and SECRET.**
+
 
 ## Quick Start (Development)
 

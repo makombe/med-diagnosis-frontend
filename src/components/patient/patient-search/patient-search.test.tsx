@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { PatientSearch } from './patient-search.component';
-import { usePatient } from '../../hooks/usePatient';
+import { usePatient } from '../../../hooks/usePatient';
 
 // Mock the custom hook
 vi.mock('../../hooks/usePateint', () => ({
